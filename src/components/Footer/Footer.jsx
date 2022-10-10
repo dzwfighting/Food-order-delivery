@@ -29,21 +29,22 @@ const Footer = () => {
               </ListGroupItem>
             </ListGroup>
           </Col>
-          <Col lg="3" md="4" sm="6"></Col>
-          <h5 className="footer__title">Contact</h5>
-          <ListGroup className="delivery__time-list email_bottom">
-            <ListGroupItem className="delivery__time-item boarder-0 ps-0">
-              <p>Location: Hoboken, NJ</p>
-            </ListGroupItem>
+          <Col lg="3" md="4" sm="6">
+            <h5 className="footer__title">Contact</h5>
+            <ListGroup className="delivery__time-list">
+              <ListGroupItem className="delivery__time-item boarder-0 ps-0">
+                <p>Location: 1 Castle Point Terrace, Hoboken, NJ 07030</p>
+              </ListGroupItem>
 
-            <ListGroupItem className="delivery__time-item boarder-0 ps-0">
-              <span>Phone: 02012048888</span>
-            </ListGroupItem>
+              <ListGroupItem className="delivery__time-item boarder-0 ps-0">
+                <span>Phone: 02012048888</span>
+              </ListGroupItem>
 
-            <ListGroupItem className="delivery__time-item boarder-0 ps-0">
-              <span>Email: example@gmail.com</span>
-            </ListGroupItem>
-          </ListGroup>
+              <ListGroupItem className="delivery__time-item boarder-0 ps-0">
+                <span>Email: example@gmail.com</span>
+              </ListGroupItem>
+            </ListGroup>
+          </Col>
           <Col lg="3" md="4" sm="6">
             <h5 className="footer__title">Newsletter</h5>
             <p>Subscribe our newsletter</p>

@@ -23,6 +23,7 @@
 
 .delivery__time-item {
   background: transparent !important;
+  border-color: transparent !important;
 }
 
 .delivery__time-item span {
@@ -35,16 +36,12 @@
   color: #212245;
 }
 
-.email_bottom {
-  padding-bottom: 20px;
-}
-
 .footer__title {
   padding-top: 5px;
   top: 15px;
   font-size: 1.1rem;
-  color: #fff;
-  background: #43446d;
+  color: #43446d;
+  /* background: #43446d; */
   font-weight: 600;
 }
 
