@@ -48,17 +48,18 @@
 .cart__badge {
   position: absolute;
   top: 20px;
-  right: -10px;
+  right: -13px;
   background: #df2020;
-  color: rgb(74, 106, 177);
-  width: 15px;
-  height: 15px;
   border-radius: 50%;
-  font-size: 0.8rem;
-  font-weight: 500;
+  width: 1rem;
+  height: 1rem;
+  line-height: 19px;
+  padding-right: -10px;
   display: flex;
   align-content: center;
   justify-content: center;
+  color: #fff;
+  font-size: 0.8rem;
 }
 
 .mobile__menu {

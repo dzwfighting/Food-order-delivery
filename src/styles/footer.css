@@ -35,8 +35,13 @@
   color: #212245;
 }
 
+.email_bottom {
+  padding-bottom: 20px;
+}
+
 .footer__title {
-  padding-top: 20px;
+  padding-top: 5px;
+  top: 15px;
   font-size: 1.1rem;
   color: #fff;
   background: #43446d;

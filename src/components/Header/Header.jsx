@@ -63,13 +63,11 @@ const Header = () => {
                 2{/* it shows how many cart the user add in */}
               </span>
             </span>
-
             <span className="user">
               <Link to="/login">
                 <i class="ri-user-line"></i>
               </Link>
             </span>
-
             <span className="mobile__menu" onClick={toggleMenu}>
               <i class="ri-menu-line"></i>
             </span>

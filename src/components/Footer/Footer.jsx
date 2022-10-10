@@ -31,7 +31,7 @@ const Footer = () => {
           </Col>
           <Col lg="3" md="4" sm="6"></Col>
           <h5 className="footer__title">Contact</h5>
-          <ListGroup className="delivery__time-list">
+          <ListGroup className="delivery__time-list email_bottom">
             <ListGroupItem className="delivery__time-item boarder-0 ps-0">
               <p>Location: Hoboken, NJ</p>
             </ListGroupItem>
