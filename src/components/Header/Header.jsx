@@ -2,6 +2,10 @@ import React, { useRef, useEffect } from "react";
 import { Container } from "reactstrap";
 import logo from "../../assets/images/res-logo.png";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
+
 import "../../styles/header.css";
 
 const nav_links = [
@@ -28,9 +32,37 @@ const nav_links = [
 ];
 const Header = () => {
   const menuRef = useRef(null);
+
+  const headerRef = useRef(null);
+
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
+  const dispatch = useDispatch();
+
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
+
+  const toggleCart = () => {
+    dispatch(cartUiActions.toggle());
+  };
+
+  useEffect(() => {
+    // it achieve when we scroll the page, the Tasty Treat logo not change, always in top
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("header__shrink");
+      } else {
+        headerRef.current.classList.remove("header__shrink");
+      }
+    });
+
+    return () => window.removeEventListener("scroll");
+  }, []);
+
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <Container>
         <div className="nav_wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
@@ -57,17 +89,20 @@ const Header = () => {
 
           {/* =============== nav right icons ================= */}
           <div className="nav__right d-flex align-items-center gap-4">
-            <span className="cart__icon">
+            <span className="cart__icon" onClick={toggleCart}>
               <i class="ri-shopping-basket-line"></i>
               <span className="cart__badge">
-                2{/* it shows how many cart the user add in */}
+                {/* it shows how many cart the user add in */}
+                {totalQuantity}
               </span>
             </span>
+
             <span className="user">
               <Link to="/login">
                 <i class="ri-user-line"></i>
               </Link>
             </span>
+
             <span className="mobile__menu" onClick={toggleMenu}>
               <i class="ri-menu-line"></i>
             </span>
