@@ -9,7 +9,8 @@ Based on React, HTML, CSS, JavaScript, JSX to achieve a foor order &amp; deliver
 1. React.js
 2. Redux Toolkit
 3. ReactStrap
-4. CSS
+4. JSX
+5. CSS
 
 ### How to start?
 
