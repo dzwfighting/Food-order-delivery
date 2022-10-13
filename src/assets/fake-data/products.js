@@ -34,7 +34,7 @@ const products = [
     category: "Burger",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque. ",
+      "Big, juicy Swiss Mushrooms Burgers are a mighty vegetarian burger that at first glance, looks like a beef burger! Large mushrooms are roasted with garlic butter, topped with Swiss cheese then stuffed into fully loaded soft rolls. ",
   },
 
   {
@@ -47,7 +47,7 @@ const products = [
     category: "Pizza",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "Fresh tomatoes, onions, arugula, kale, eggplants, bell peppers, spinach, zucchini, mushrooms and more. They all make flavorsome vegetarian pizza toppings. Some vegetables need to be cooked or roasted to bring out their flavors, while others vegetables are best when they're raw.",
   },
 
   {
@@ -60,7 +60,7 @@ const products = [
     category: "Pizza",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "Our double cheese pizza comes with the goodness of extra cheese. You can see oodles of liquid cheese coming out with every bite, making the pizza all the more delicious.",
   },
 
   {
@@ -73,7 +73,7 @@ const products = [
     category: "Pizza",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes and jalapeno with a liberal sprinkling of exotic Mexican herbs.",
   },
 
   {
@@ -86,7 +86,7 @@ const products = [
     category: "Burger",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "A traditional grilled sandwich that consists of ground meat made into a patty, cooked, topped with a slice of cheese, and placed between two halves of a bun to create this favorite international food.",
   },
   {
     id: "06",
@@ -98,7 +98,7 @@ const products = [
     category: "Burger",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "00% quarter pounder beef patty, then complete the tasty picture with cheese, onions, tangy mustard and pickles.",
   },
 
   {
@@ -111,7 +111,7 @@ const products = [
     category: "Pizza",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "Its toppings commonly serve scampi, mussels, or squid on top of a tomato sauce with no cheese.",
   },
 
   {
@@ -124,7 +124,7 @@ const products = [
     category: "Pizza",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "This thin crust pizza does not have a pronounced rim to it and bakes up flat all the way across, making it ideal for spreading the sauce and any cheeses to the very edge. Try cutting into squares instead of triangles for a fun twist.",
   },
 
   {
@@ -137,7 +137,7 @@ const products = [
     category: "Pizza",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "This pizza is layered in sauce (that comes together in seconds), quick sautéed mushrooms, onions and garlic, ribbons of lacinato kale and light layers of mozzarella (fresh and shredded) and parmesan cheese.",
   },
 
   {
@@ -150,7 +150,7 @@ const products = [
     category: "Burger",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "The meat is usually accompanied by various ingredients such as tomato slices, onions, pickles, or lettuce, and numerous condiments such as mayonnaise, ketchup, or salsa.",
   },
 
   {
@@ -163,7 +163,7 @@ const products = [
     category: "Bread",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "The crispness of the dough is created by starch gel on its surface, which is created in the dough when it's moist at 180°F and above. And the lovely brown color we associate with well-baked bread is a by-product of the Maillard reaction.",
   },
 
   {
@@ -176,7 +176,7 @@ const products = [
     category: "Bread",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "Real, crusty, chewy, delicious bakery-style loaves that taste incredible with dips, soups, sauces, and comforting dinners.",
   },
 
   {
@@ -189,7 +189,7 @@ const products = [
     category: "Bread",
 
     desc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+      "A loaf of bread is bread which has been shaped and baked in one piece. It is usually large enough for more than one person and can be cut into slices.",
   },
 ];
 
