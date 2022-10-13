@@ -1,10 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import { Container } from "reactstrap";
 import logo from "../../assets/images/res-logo.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
+
+import useAuth from "../../custom-hooks/useAuth";
+
+import { motion } from "framer-motion";
 
 import "../../styles/header.css";
 
@@ -30,6 +34,9 @@ const Header = () => {
   const menuRef = useRef(null);
 
   const headerRef = useRef(null);
+
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
@@ -93,11 +100,31 @@ const Header = () => {
               </span>
             </span>
 
+            <div className="profile">
+              <motion.img
+                whileTap={{ scale: 1.2 }}
+                src={currentUser ? currentUser.photoURL : logo}
+                alt=""
+              />
+
+              <div className="profile__actions">
+                {currentUser ? (
+                  <span>Logout</span>
+                ) : (
+                  <div>
+                    <Link to="/register">Signup</Link>
+                    <Link to="/login">Login</Link>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/*
             <span className="user">
               <Link to="/login">
                 <i class="ri-user-line"></i>
               </Link>
-            </span>
+            </span> */}
 
             <span className="mobile__menu" onClick={toggleMenu}>
               <i class="ri-menu-line"></i>
