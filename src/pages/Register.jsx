@@ -7,73 +7,87 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import {
+  getAuth,
   createUserWithEmailAndPassword,
-  EmailAuthCredential,
   updateProfile,
 } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { setDoc, doc } from "firebase/firestore";
+// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+// import { setDoc, doc } from "firebase/firestore";
 
-import { auth } from "../firebase.config";
-import { storage } from "../firebase.config";
-import { toast } from "react-toastify";
-import { db } from "../firebase.config";
+// import { auth } from "../firebase.config";
+// import { storage } from "../firebase.config";
+// import { toast } from "react-toastify";
+// import { db } from "../firebase.config";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [file, setFile] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [file, setFile] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const signup = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+    // setLoading(true);
 
-      const user = await userCredential.user;
-      const storageRef = ref(storage, `images/${Date.now() + username}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/login");
+      })
+      .catch((error) => {
+        // setLoading(false);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
 
-      uploadTask.on(
-        (error) => {
-          toast.error(error.message);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            // update user frofile
-            await updateProfile(user, {
-              displayName: username,
-              photoURL: downloadURL,
-            });
+    // try {
+    //   const userCredential = await createUserWithEmailAndPassword(
+    //     auth,
+    //     email,
+    //     password
+    //   );
 
-            // store user data in firebase database
-            await setDoc(doc(db, "users", user.uid), {
-              uid: user.uid,
-              displayName: username,
-              email,
-              photoURL: downloadURL,
-            });
-          });
-        }
-      );
+    //   const user = await userCredential.user;
+    //   const storageRef = ref(storage, `images/${Date.now() + username}`);
+    //   const uploadTask = uploadBytesResumable(storageRef, file);
 
-      setLoading(false);
-      toast.success("Account created");
-      navigate("/login");
-      // console.log(user);
-    } catch (error) {
-      setLoading(false);
-      toast.error("invalid input, please try again");
-    }
+    //     uploadTask.on(
+    //       (error) => {
+    //         toast.error(error.message);
+    //       },
+    //       () => {
+    //         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+    //           // update user frofile
+    //           await updateProfile(user, {
+    //             displayName: username,
+    //             photoURL: downloadURL,
+    //           });
+
+    //           // store user data in firebase database
+    //           await setDoc(doc(db, "users", user.uid), {
+    //             uid: user.uid,
+    //             displayName: username,
+    //             email,
+    //             photoURL: downloadURL,
+    //           });
+    //         });
+    //       }
+    //     );
+
+    //     setLoading(false);
+    //     toast.success("Account created");
+    //     navigate("/login");
+    //     // console.log(user);
+    //   } catch (error) {
+    //     setLoading(false);
+    //     toast.error("invalid input, please try again");
+    //   }
   };
 
   return (
@@ -82,6 +96,44 @@ const Register = () => {
       <section>
         <Container>
           <Row>
+            <Col lg="6" md="6" sm="12" className="m-auto text-center">
+              <form className="form mb-5" onSubmit={signup}>
+                <div className="form__group">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+                <div className="form__group">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form__group">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+
+                <button type="submit" className="addToCart__btn">
+                  Sign Up
+                </button>
+              </form>
+              <Link to="/login">Already have an account? Login</Link>
+            </Col>
+
+            {/* 
             {loading ? (
               <Col lg="12" className="text-center">
                 <h5 className="fw-bold">Loading......</h5>
@@ -116,12 +168,15 @@ const Register = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
+
+                                      
                   <div className="form__group">
                     <input
                       type="file"
                       onChange={(e) => setFile(e.target.files[0])}
                     />
-                  </div>
+                    </div>
+                    
 
                   <button type="submit" className="addToCart__btn">
                     Sign Up
@@ -129,7 +184,7 @@ const Register = () => {
                 </form>
                 <Link to="/login">Already have an account? Login</Link>
               </Col>
-            )}
+            )} */}
           </Row>
         </Container>
       </section>

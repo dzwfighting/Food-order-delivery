@@ -7,9 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 
 import useAuth from "../../custom-hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase.config";
 
-import { motion } from "framer-motion";
-
+// import { motion } from "framer-motion";
+import Dropdown from "react-bootstrap/Dropdown";
 import "../../styles/header.css";
 
 const nav_links = [
@@ -40,12 +42,25 @@ const Header = () => {
 
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
+  const profileActionRef = useRef(null);
+
   const dispatch = useDispatch();
 
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
+  };
+
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("log out");
+        navigate("/home");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   useEffect(() => {
@@ -63,6 +78,14 @@ const Header = () => {
 
     return () => window.removeEventListener("scroll");
   }, []);
+
+  const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+  const navigateToCart = () => {
+    navigate("/cart");
+  };
+
+  const toggleProfileActions = () =>
+    profileActionRef.current.classList.toggle("show__profileActions");
 
   return (
     <header className="header" ref={headerRef}>
@@ -100,27 +123,55 @@ const Header = () => {
               </span>
             </span>
 
-            <div className="profile">
-              <motion.img
-                whileTap={{ scale: 1.2 }}
-                src={currentUser ? currentUser.photoURL : logo}
-                alt=""
-              />
+            <div
+              className="profile"
+              ref={profileActionRef}
+              onClick={toggleProfileActions}
+            >
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  <i class="ri-user-line"></i>
+                </Dropdown.Toggle>
 
-              <div className="profile__actions">
-                {currentUser ? (
-                  <span>Logout</span>
-                ) : (
-                  <div>
-                    <Link to="/register">Signup</Link>
-                    <Link to="/login">Login</Link>
-                  </div>
-                )}
-              </div>
+                <Dropdown.Menu
+                  className="profile__actions"
+                  ref={profileActionRef}
+                  onClick={toggleProfileActions}
+                >
+                  {currentUser ? (
+                    <Dropdown.Item href="/home" onClick={logout}>
+                      Logout
+                    </Dropdown.Item>
+                  ) : (
+                    <div>
+                      <Dropdown.Item href="/register">Register</Dropdown.Item>
+                      <Dropdown.Item href="/login">Login</Dropdown.Item>
+                    </div>
+                  )}
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
 
-            {/*
-            <span className="user">
+            {/* <div
+              className="profile nav__icons"
+              ref={profileActionRef}
+              onClick={toggleProfileActions}
+            >
+              {currentUser ? (
+                <div className="profile__actions">
+                  <span>Logout</span>
+                </div>
+              ) : (
+                <div className="profile__actions">
+                  <Link to="/register">Signup</Link>
+                  <Link to="/login">Login</Link>
+                </div>
+              )}
+            </div> */}
+
+            {/* </div> */}
+
+            {/* <span className="user">
               <Link to="/login">
                 <i class="ri-user-line"></i>
               </Link>

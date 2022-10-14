@@ -63,6 +63,10 @@
   font-size: 0.8rem;
 }
 
+.show__profileActions {
+  display: block;
+}
+
 .mobile__menu {
   font-weight: 600;
   display: none;
