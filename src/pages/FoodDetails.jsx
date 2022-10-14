@@ -10,10 +10,24 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../store/shopping-cart/cartSlice";
 
 import { useState, useEffect } from "react";
+import { db } from "../firebase.config";
+
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  arrayUnion,
+  FieldValue,
+} from "firebase/firestore";
 
 import "../styles/product-details.css";
 
+import useAuth from "../custom-hooks/useAuth";
 import ProductCard from "../components/UI/product-card/ProductCard";
+import { getAuth } from "firebase/auth";
 
 const FoodDetails = () => {
   const [tab, setTab] = useState("desc");
@@ -32,6 +46,73 @@ const FoodDetails = () => {
 
   const relatedProduct = products.filter((item) => category === item.category);
 
+  const { currentUser } = useAuth();
+  // console.log(currentUser.email);
+
+  // finish login to review
+  const [users, setUsers] = useState([]);
+  // console.log(users);
+  const [newReview, setReview] = useState("");
+  console.log(newReview);
+  const usersCollectionRef = collection(db, "users");
+  // console.log(usersCollectionRef);
+
+  const createUser = async () => {
+    await addDoc(usersCollectionRef, { review: arrayUnion(newReview) });
+  };
+
+  const updateUser = async (id, newReview) => {
+    console.log("in updateUser!");
+    console.log(newReview);
+    const userDoc = doc(db, "users", id);
+    console.log(id);
+    console.log(typeof newReview);
+    const newFields = { review: arrayUnion(newReview) };
+    console.log(newFields);
+    await updateDoc(userDoc, newFields);
+    // const userDoc = doc(db, "users", id);
+    // const unionReview = await userDoc.update({
+    //   review: FieldValue.arrayUnion(newReview)
+    // })
+  };
+
+  // function findId() {
+  //   console.log(users);
+  //   let user = users.filter((user) => {
+  //     console.log(user);
+  //     return user.id === currentUser.uid;
+  //   });
+
+  //   updateUser(user.id, user.review);
+  // }
+  async function find() {
+    // console.log(users);
+    for (let u in users) {
+      console.log(currentUser.email);
+      if ((await users[u].email) === currentUser.email) {
+        console.log(users);
+        console.log(users[u]);
+        return users[u];
+      }
+    }
+    return [];
+  }
+  const user = find();
+  console.log(user);
+
+  useEffect(() => {
+    // console.log("in");
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      // console.log(data);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getUsers();
+  }, []);
+
+  // ----------------------------------------------
+
   const addItem = () => {
     dispatch(
       cartActions.addItem({
@@ -43,10 +124,10 @@ const FoodDetails = () => {
     );
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(enteredName, enteredEmail, reviewMsg);
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   console.log(enteredName, enteredEmail, reviewMsg);
+  // };
 
   useEffect(() => {
     setPreviewImg(product.image01);
@@ -150,8 +231,34 @@ const FoodDetails = () => {
                   <p className="feedback__text">great products</p>
                 </div>
 
-                <form className="form" onSubmit={submitHandler}>
-                  <div className="form__group">
+                <form className="form">
+                  <div>
+                    {currentUser ? (
+                      <div className="form__group">
+                        <textarea
+                          rows={5}
+                          type="text"
+                          placeholder="Write your Review"
+                          onChange={(e) => setReview(e.target.value)}
+                          required
+                        />
+
+                        <button
+                          // type="submit"
+                          onClick={() => {
+                            updateUser(user.id, newReview);
+                          }}
+                          // updateUser(user.id, user.age);
+                          className="addToCart__btn"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    ) : (
+                      <p>Login to Review</p>
+                    )}
+                    {/* <form className="form" onSubmit={submitHandler}>
+                   <div className="form__group">
                     <input
                       type="text"
                       placeholder="Write your name"
@@ -167,21 +274,19 @@ const FoodDetails = () => {
                       onChange={(e) => setEnteredEmail(e.target.value)}
                       required
                     />
+                  </div> 
+                  </form> */}
                   </div>
 
-                  <div className="form__group">
-                    <textarea
-                      rows={5}
-                      type="text"
-                      placeholder="Write your Review"
+                  {/* <div className="form__group">
+                     <textarea
+                       rows={5}
+                       type="text"
+                       placeholder="Write your Review"
                       onChange={(e) => setReviewMsg(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <button type="submit" className="addToCart__btn">
-                    Submit
-                  </button>
+                       required
+                     />
+                  </div> */}
                 </form>
               </div>
             )}

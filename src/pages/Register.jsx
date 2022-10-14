@@ -6,34 +6,51 @@ import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+import { db } from "../firebase.config";
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
+  collection,
+  setDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+import { UploadTask } from "firebase/storage";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { setDoc, doc } from "firebase/firestore";
 
 // import { auth } from "../firebase.config";
 // import { storage } from "../firebase.config";
-// import { toast } from "react-toastify";
-// import { db } from "../firebase.config";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [file, setFile] = useState(null);
-  // const [loading, setLoading] = useState(false);
 
+  const usersCollectionRef = collection(db, "users");
   const navigate = useNavigate();
+
+  const createUser = async () => {
+    await addDoc(usersCollectionRef, {
+      username: username,
+      email: email,
+      review: ["so Good"],
+    });
+    // await setDoc(doc(db, "users", user.uid), {
+    //   uid: user.uid,
+    //   username,
+    //   email,
+    //   review,
+    // });
+  };
 
   const signup = async (e) => {
     e.preventDefault();
-
-    // setLoading(true);
-
     const auth = getAuth();
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -44,6 +61,8 @@ const Register = () => {
         // setLoading(false);
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorMessage);
+        alert("Password should be at least 6 characters");
       });
 
     // try {
@@ -126,7 +145,11 @@ const Register = () => {
                   />
                 </div>
 
-                <button type="submit" className="addToCart__btn">
+                <button
+                  // type="submit"
+                  className="addToCart__btn"
+                  onClick={createUser}
+                >
                   Sign Up
                 </button>
               </form>

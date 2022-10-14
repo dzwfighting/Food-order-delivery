@@ -8,6 +8,8 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase.config";
 // import { toast } from "react-toastify";
 
+import { Alert } from "@mui/material";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +19,7 @@ const Login = () => {
   const signIn = async (e) => {
     e.preventDefault();
     const auth = getAuth();
+    // console.log(auth.currentUser);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -27,6 +30,7 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
+        alert("Please input right Email or Password");
       });
 
     // setLoading(true);

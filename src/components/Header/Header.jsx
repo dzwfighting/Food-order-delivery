@@ -79,10 +79,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll");
   }, []);
 
-  const menuToggle = () => menuRef.current.classList.toggle("active__menu");
-  const navigateToCart = () => {
-    navigate("/cart");
-  };
+  // const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+  // const navigateToCart = () => {
+  //   navigate("/cart");
+  // };
 
   const toggleProfileActions = () =>
     profileActionRef.current.classList.toggle("show__profileActions");
@@ -115,13 +115,19 @@ const Header = () => {
 
           {/* =============== nav right icons ================= */}
           <div className="nav__right d-flex align-items-center gap-4">
-            <span className="cart__icon" onClick={toggleCart}>
-              <i class="ri-shopping-basket-line"></i>
-              <span className="cart__badge">
-                {/* it shows how many cart the user add in */}
-                {totalQuantity}
+            {currentUser ? (
+              <span className="cart__icon" onClick={toggleCart}>
+                <i class="ri-shopping-basket-line"></i>
+                <span className="cart__badge">
+                  {/* it shows how many cart the user add in */}
+                  {totalQuantity}
+                </span>
               </span>
-            </span>
+            ) : (
+              <span className="cart__icon">
+                <Link to="/login">Visitors</Link>
+              </span>
+            )}
 
             <div
               className="profile"

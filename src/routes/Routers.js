@@ -19,14 +19,17 @@ const Routers = () => {
       <Route path="/foods" element={<AllFoods />} />
       <Route path="/foods/:id" element={<FoodDetails />} />
       <Route path="/cart" element={<Cart />} />
-      <Route
+
+      {/* <Route
         path="/checkout"
         element={
           <ProtectedRoute>
             <Checkout />
           </ProtectedRoute>
         }
-      />
+      /> */}
+
+      <Route path="/checkout" element={<Checkout />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/contact" element={<Contact />} />

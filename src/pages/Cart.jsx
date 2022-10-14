@@ -12,58 +12,70 @@ import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
 
+import useAuth from "../custom-hooks/useAuth";
+
+import { Alert } from "@mui/material";
+
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+  const { currentUser } = useAuth();
 
   return (
     <Helmet title="Cart">
       <CommonSection title="Your Cart" />
 
       <section>
-        <Container>
-          <Row>
-            <Col lg="12">
-              {cartItems.length === 0 ? (
-                <h5 className="text-center">Your cart is Empty</h5>
-              ) : (
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Image</th>
-                      <th>Product Title</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
+        {currentUser ? (
+          <Container>
+            <Row>
+              <Col lg="12">
+                {cartItems.length === 0 ? (
+                  <h5 className="text-center">Your cart is Empty</h5>
+                ) : (
+                  <table className="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Image</th>
+                        <th>Product Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
 
-                  <tbody>
-                    {cartItems.map((item) => (
-                      <Tr item={item} key={item.id} />
-                    ))}
-                  </tbody>
-                </table>
-              )}
+                    <tbody>
+                      {cartItems.map((item) => (
+                        <Tr item={item} key={item.id} />
+                      ))}
+                    </tbody>
+                  </table>
+                )}
 
-              <div className="mt-4">
-                <h6>
-                  Subtotal: $
-                  <span className="cart__subtotal">{totalAmount}</span>
-                </h6>
-                <p>Taxes and shopping will calculate at checkout</p>
-                <div className="cart__page-btn">
-                  <button className="addToCart__btn me-4">
-                    <Link to="/foods">Continue Shopping</Link>
-                  </button>
-                  <button className="addToCart__btn">
-                    <Link to="/checkout">Proceed to checkout</Link>
-                  </button>
+                <div className="mt-4">
+                  <h6>
+                    Subtotal: $
+                    <span className="cart__subtotal">{totalAmount}</span>
+                  </h6>
+                  <p>Taxes and shopping will calculate at checkout</p>
+                  <div className="cart__page-btn">
+                    <button className="addToCart__btn me-4">
+                      <Link to="/foods">Continue Shopping</Link>
+                    </button>
+                    <button className="addToCart__btn">
+                      <Link to="/checkout">Proceed to checkout</Link>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+          </Container>
+        ) : (
+          <Alert severity="warning">
+            You are not Login, please Login in and try again
+          </Alert>
+        )}
       </section>
     </Helmet>
   );
