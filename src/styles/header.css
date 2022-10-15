@@ -67,6 +67,10 @@
   display: block;
 }
 
+.move_left span {
+  padding-left: 20px;
+}
+
 .mobile__menu {
   font-weight: 600;
   display: none;

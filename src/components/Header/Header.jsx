@@ -154,10 +154,15 @@ const Header = () => {
                     // <Dropdown.Item href="/home" onClick={logout}>
                     //   Logout
                     // </Dropdown.Item>
-                    <div>
+                    <div className="move_left">
                       <span>
                         <Link to="/register">Register</Link>
                       </span>
+                      <div>
+                        <span>
+                          <Link to="/login">Login</Link>
+                        </span>
+                      </div>
                     </div>
 
                     // <div>
