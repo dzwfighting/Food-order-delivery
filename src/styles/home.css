@@ -133,6 +133,6 @@
   }
 
   .hero__service {
-    justify-content: center;
+    justify-content: left;
   }
 }

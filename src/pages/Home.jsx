@@ -125,7 +125,7 @@ const Home = () => {
                     <p className=" d-flex align-items-center gap-2">
                       <span className="shipping__icon">
                         <i class="ri-car-line"></i>
-                      </span>{" "}
+                      </span>
                       No shipping charge
                     </p>
                   </div>
