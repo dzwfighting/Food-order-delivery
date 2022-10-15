@@ -150,8 +150,12 @@ const Header = () => {
                     </Dropdown.Item>
                   ) : (
                     <div>
-                      <Dropdown.Item href="/register">Register</Dropdown.Item>
-                      <Dropdown.Item href="/login">Login</Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link to="/register">Register</Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link to="/login">Login</Link>
+                      </Dropdown.Item>
                     </div>
                   )}
                 </Dropdown.Menu>
