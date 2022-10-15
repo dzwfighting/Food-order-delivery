@@ -18,7 +18,7 @@ import {
   // deleteDoc,
   // doc,
 } from "firebase/firestore";
-import { UploadTask } from "firebase/storage";
+// import { UploadTask } from "firebase/storage";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { setDoc, doc } from "firebase/firestore";
 
@@ -59,7 +59,7 @@ const Register = () => {
       })
       .catch((error) => {
         // setLoading(false);
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
         alert("Password should be at least 6 characters");

@@ -10,7 +10,7 @@ import ReactPaginate from "react-paginate";
 
 import "../styles/all-foods.css";
 import "../styles/pagination.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const AllFoods = () => {
   const [searchTerm, setSearchTerm] = useState("");

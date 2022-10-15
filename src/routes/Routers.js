@@ -9,7 +9,7 @@ import Contact from "../pages/Contact";
 import Checkout from "../pages/Checkout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "./ProtectedRoute";
 
 const Routers = () => {
   return (

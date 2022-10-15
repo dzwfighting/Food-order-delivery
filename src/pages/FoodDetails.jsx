@@ -4,7 +4,7 @@ import products from "../assets/fake-data/products";
 import { useParams } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
 import Commonsection from "../components/UI/common-section/CommonSection";
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 import { useDispatch } from "react-redux";
 import { cartActions } from "../store/shopping-cart/cartSlice";
@@ -15,13 +15,13 @@ import { db } from "../firebase.config";
 import {
   collection,
   getDocs,
-  addDoc,
+  // addDoc,
   updateDoc,
-  deleteDoc,
-  setDoc,
+  // deleteDoc,
+  // setDoc,
   doc,
-  arrayUnion,
-  FieldValue,
+  // arrayUnion,
+  // FieldValue,
 } from "firebase/firestore";
 
 import "../styles/product-details.css";
@@ -58,9 +58,9 @@ const FoodDetails = () => {
   const usersCollectionRef = collection(db, "users");
   // console.log(usersCollectionRef);
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { review: newReview });
-  };
+  // const createUser = async () => {
+  //   await addDoc(usersCollectionRef, { review: newReview });
+  // };
 
   const updateUser = async (id, newReview) => {
     console.log("in updateUser!");

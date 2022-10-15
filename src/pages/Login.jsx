@@ -8,7 +8,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase.config";
 // import { toast } from "react-toastify";
 
-import { Alert } from "@mui/material";
+// import { Alert } from "@mui/material";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ const Login = () => {
         navigate("/checkout");
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
         alert("Please input right Email or Password");
