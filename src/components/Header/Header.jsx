@@ -145,18 +145,26 @@ const Header = () => {
                   onClick={toggleProfileActions}
                 >
                   {currentUser ? (
-                    <Dropdown.Item href="/home" onClick={logout}>
-                      Logout
-                    </Dropdown.Item>
+                    <span>
+                      <Link to="/home" onClick={logout}>
+                        Logout
+                      </Link>
+                    </span>
                   ) : (
+                    // <Dropdown.Item href="/home" onClick={logout}>
+                    //   Logout
+                    // </Dropdown.Item>
                     <div>
-                      <Dropdown.Item>
+                      <span>
                         <Link to="/register">Register</Link>
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Link to="/login">Login</Link>
-                      </Dropdown.Item>
+                      </span>
                     </div>
+
+                    // <div>
+                    //   <Link to="/register">Register</Link>
+                    //   <Dropdown.Item href="/register">Register</Dropdown.Item>
+                    //   <Dropdown.Item href="/login">Login</Dropdown.Item>
+                    // </div>
                   )}
                 </Dropdown.Menu>
               </Dropdown>
