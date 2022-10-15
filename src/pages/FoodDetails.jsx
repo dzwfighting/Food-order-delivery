@@ -18,6 +18,7 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  setDoc,
   doc,
   arrayUnion,
   FieldValue,
@@ -58,22 +59,19 @@ const FoodDetails = () => {
   // console.log(usersCollectionRef);
 
   const createUser = async () => {
-    await addDoc(usersCollectionRef, { review: arrayUnion(newReview) });
+    await addDoc(usersCollectionRef, { review: newReview });
   };
 
   const updateUser = async (id, newReview) => {
     console.log("in updateUser!");
     console.log(newReview);
     const userDoc = doc(db, "users", id);
+    console.log(userDoc);
     console.log(id);
-    console.log(typeof newReview);
-    const newFields = { review: arrayUnion(newReview) };
+    // console.log(typeof newReview);
+    const newFields = { review: newReview };
     console.log(newFields);
     await updateDoc(userDoc, newFields);
-    // const userDoc = doc(db, "users", id);
-    // const unionReview = await userDoc.update({
-    //   review: FieldValue.arrayUnion(newReview)
-    // })
   };
 
   // function findId() {
@@ -85,11 +83,12 @@ const FoodDetails = () => {
 
   //   updateUser(user.id, user.review);
   // }
-  async function find() {
+
+  function find() {
     // console.log(users);
     for (let u in users) {
       console.log(currentUser.email);
-      if ((await users[u].email) === currentUser.email) {
+      if (users[u].email === currentUser.email) {
         console.log(users);
         console.log(users[u]);
         return users[u];
@@ -124,10 +123,24 @@ const FoodDetails = () => {
     );
   };
 
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   console.log(enteredName, enteredEmail, reviewMsg);
-  // };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    // console.log(newReview);
+    // const updateUser = async (id, newReview) => {
+    // console.log("in updateUser!");
+    // console.log(newReview);
+    // const userDoc = doc(db, "users", id);
+    // console.log(id);
+    // // console.log(typeof newReview);
+    // const newFields = { review: arrayUnion(newReview) };
+    // console.log(newFields);
+    // await updateDoc(userDoc, newFields);
+    // };
+
+    alert(
+      `you input review is:${newReview}, and we will post your comments after we check them`
+    );
+  };
 
   useEffect(() => {
     setPreviewImg(product.image01);
@@ -231,7 +244,7 @@ const FoodDetails = () => {
                   <p className="feedback__text">great products</p>
                 </div>
 
-                <form className="form">
+                <form className="form" onSubmit={submitHandler}>
                   <div>
                     {currentUser ? (
                       <div className="form__group">
@@ -244,7 +257,7 @@ const FoodDetails = () => {
                         />
 
                         <button
-                          // type="submit"
+                          type="submit"
                           onClick={() => {
                             updateUser(user.id, newReview);
                           }}

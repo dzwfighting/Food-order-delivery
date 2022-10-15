@@ -37,7 +37,7 @@ const Register = () => {
     await addDoc(usersCollectionRef, {
       username: username,
       email: email,
-      review: ["so Good"],
+      review: "",
     });
     // await setDoc(doc(db, "users", user.uid), {
     //   uid: user.uid,
@@ -46,7 +46,6 @@ const Register = () => {
     //   review,
     // });
   };
-
   const signup = async (e) => {
     e.preventDefault();
     const auth = getAuth();
@@ -55,6 +54,7 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        // console.log(user.uid);
         navigate("/login");
       })
       .catch((error) => {
@@ -146,7 +146,7 @@ const Register = () => {
                 </div>
 
                 <button
-                  // type="submit"
+                  type="submit"
                   className="addToCart__btn"
                   onClick={createUser}
                 >
