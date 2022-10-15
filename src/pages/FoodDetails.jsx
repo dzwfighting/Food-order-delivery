@@ -28,14 +28,14 @@ import "../styles/product-details.css";
 
 import useAuth from "../custom-hooks/useAuth";
 import ProductCard from "../components/UI/product-card/ProductCard";
-import { getAuth } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
 
 const FoodDetails = () => {
   const [tab, setTab] = useState("desc");
 
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [reviewMsg, setReviewMsg] = useState("");
+  // const [enteredName, setEnteredName] = useState("");
+  // const [enteredEmail, setEnteredEmail] = useState("");
+  // const [reviewMsg, setReviewMsg] = useState("");
 
   const { id } = useParams();
   const dispatch = useDispatch();

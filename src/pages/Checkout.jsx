@@ -5,6 +5,8 @@ import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 
+import { useNavigate } from "react-router-dom";
+
 import useAuth from "../custom-hooks/useAuth";
 
 import { Alert } from "@mui/material";
@@ -19,6 +21,7 @@ const Checkout = () => {
   const [postalCode, setPostalCode] = useState("");
 
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   const shippingInfo = [];
 
@@ -29,6 +32,16 @@ const Checkout = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (
+      !enterName ||
+      !enterEmail ||
+      !enterNumber ||
+      !enterCountry ||
+      !enterCity ||
+      !postalCode
+    ) {
+      alert("Please do not input an empty string");
+    }
     const userShippingAddress = {
       name: enterName,
       email: enterEmail,
@@ -39,6 +52,8 @@ const Checkout = () => {
     };
     shippingInfo.push(userShippingAddress);
     console.log(shippingInfo);
+    alert("payment success");
+    navigate("/home");
   };
 
   return (

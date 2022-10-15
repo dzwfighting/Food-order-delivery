@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -11,12 +11,12 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase.config";
 import {
   collection,
-  setDoc,
-  getDocs,
+  // setDoc,
+  // getDocs,
   addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
+  // updateDoc,
+  // deleteDoc,
+  // doc,
 } from "firebase/firestore";
 import { UploadTask } from "firebase/storage";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
