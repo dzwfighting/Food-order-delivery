@@ -24,6 +24,7 @@
     "react-slick": "^0.29.0",
     "reactstrap": "^9.0.1",
     "remixicon": "^2.5.0",
+    "ssh-server": "^1.2.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^1.1.2"
   },
