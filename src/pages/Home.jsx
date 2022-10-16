@@ -101,7 +101,12 @@ const Home = () => {
           <Row>
             <Col lg="6" md="6">
               <div className="hero__content">
-                <h5 className="mb-3">Let make an order use easy way</h5>
+                {/* <h5 className="mb-3">Let make an order use easy way</h5> */}
+                <div>
+                  <br />
+                  <br />
+                  <br />
+                </div>
                 <h1 className="mb-4 hero__title">
                   <span>HUNGREY?</span>
                   <br /> just wait food{" "}

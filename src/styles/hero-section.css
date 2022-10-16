@@ -2,6 +2,9 @@
   font-size: 2.5rem;
   line-height: 55px;
 }
+/* .hero__img img {
+  padding-top: 0px;
+} */
 
 .hero__title span {
   color: #df2020;
