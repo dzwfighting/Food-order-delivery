@@ -87,8 +87,8 @@ const FoodDetails = () => {
   function find() {
     // console.log(users);
     for (let u in users) {
-      console.log(currentUser.email);
-      if (users[u].email === currentUser.email) {
+      // console.log(currentUser.email);
+      if (currentUser && users[u].email === currentUser.email) {
         console.log(users);
         console.log(users[u]);
         return users[u];

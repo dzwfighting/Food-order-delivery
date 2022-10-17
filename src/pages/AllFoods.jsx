@@ -58,10 +58,10 @@ const AllFoods = () => {
               <div className="sorting__widget text-end">
                 <select className="w-50">
                   <option>Default</option>
-                  <option value="ascending">Alphabetically A-Z</option>
+                  {/* <option value="ascending">Alphabetically A-Z</option>
                   <option value="descending">Alphabetically Z-A</option>
                   <option value="high-price">High Price</option>
-                  <option value="low-price">Low price</option>
+                  <option value="low-price">Low price</option> */}
                 </select>
               </div>
             </Col>
